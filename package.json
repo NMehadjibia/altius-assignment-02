@@ -1,0 +1,20 @@
+{
+  "name": "altius-assignment-02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NMehadjibia/altius-assignment-02.git"
+  },
+  "author": "Nour el houda MEHADJIBIA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NMehadjibia/altius-assignment-02/issues"
+  },
+  "homepage": "https://github.com/NMehadjibia/altius-assignment-02#readme"
+}
