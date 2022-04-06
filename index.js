@@ -32,7 +32,7 @@ async function main() {
             arr = data.value;
             if(!arr) console.log("===>> Array is empty !");
             else {
-                arr = arr.replace(/ {1,}/g, " ").split(" ");
+                arr = arr.replace(/ {1,}/g, " ").split(" ").filter(elm => elm);
                 const notANum = arr?.find(elm => isNaN(elm));
                 if (notANum) {
                     arr = undefined;
