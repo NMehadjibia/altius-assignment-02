@@ -13,6 +13,7 @@ async function main() {
     let arr;
 
     try {
+        // Reading Size and checking if it has a valid value
         do{
             console.log("Size: ");
             const data = await inputsIterator.next();
@@ -24,7 +25,7 @@ async function main() {
                 else if (size <= 0) console.log("==>> Size must be greater than 0");
             }
         } while (!size || !Number.isInteger(size) || size <= 0);
-    
+        // Redaing Array and checking if it has valid values
         do{
             console.log("Array: ");
             const data = await inputsIterator.next();
@@ -61,19 +62,21 @@ function minimumDistances(array){
     if(!array || !Array.isArray(array) || array.length === 0) 
         return minDistance;
 
-    let processingArr = array?.map(elm => {
+    let processingArr = array.map(elm => {
         return { value: elm, checked: false};
     });
 
     for (let currentIndex = 0; currentIndex < array.length; currentIndex++){
         if (!processingArr[currentIndex].checked) {
             const number = array[currentIndex];
+            // Finding the nextIndex in the array such as : array[currentIndex] === array[nextIndex]
             const nextIndex = processingArr.findIndex((elm, index) => 
                 index != currentIndex && 
                 !elm.checked &&
                 elm.value === number
             );
-
+            
+            // Minimum distances is the min between all [nextIndex - currentIndex]
             if (nextIndex != -1) {
                 const distance = nextIndex - currentIndex;
                 if (minDistance === -1 || minDistance > distance) minDistance = distance;
