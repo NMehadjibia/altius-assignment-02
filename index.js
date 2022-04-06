@@ -36,11 +36,41 @@ async function main() {
                 arr = undefined;
                 console.log("===>> Array must contain only numbers !");
             } else {
-                arr = arr.slice(0, size);
+                if (arr.length > size) arr = arr.slice(0, size);
                 arr = arr.map(elm => parseFloat(elm));
             }
         }
     } while (!arr);
-    console.log("Array: ", arr);
     readFromTerminal.close();
+    console.log("Array: ", arr);
+    
+    let minDistance = minimumDistances(arr);
+
+    console.log("Minimum distances: ", minDistance);
+}
+
+function minimumDistances(array){
+    let minDistance = -1;
+    let processingArr = array?.map(elm => {
+        return { value: elm, checked: false};
+    });
+
+    for (let currentIndex = 0; currentIndex < array.length; currentIndex++){
+        if (!processingArr[currentIndex].checked) {
+            const number = array[currentIndex];
+            const nextIndex = processingArr.findIndex((elm, index) => 
+                index != currentIndex && 
+                !elm.checked &&
+                elm.value === number
+            );
+
+            if (nextIndex != -1) {
+                const distance = nextIndex - currentIndex;
+                if (minDistance === -1 || minDistance > distance) minDistance = distance;
+            }
+            processingArr[currentIndex].checked = true;
+        }
+    }
+
+    return minDistance;
 }
